@@ -123,10 +123,23 @@
 
     .paragraph-panel .paragraph-text {
       margin: 0;
-      font-size: 1.05rem;
+      font-size: 1.50rem;
       line-height: 1.85;
       color: var(--text);
       min-height: 6rem;
+    }
+
+    .paragraph-gif {
+      display: flex;
+      justify-content: center;
+      padding: 0.5rem 0;
+    }
+
+    .paragraph-gif img {
+      max-width: 100%;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.25);
     }
 
     .paragraph-actions {
@@ -158,6 +171,60 @@
       background: rgba(56, 189, 248, 0.18);
     }
 
+    .flow-chart {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+      align-items: center;
+    }
+
+    .flow-node {
+      position: relative;
+      padding: 1.5rem 1.25rem;
+      border-radius: 22px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.16);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+      text-align: center;
+    }
+
+    .flow-node strong {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      color: #fff;
+    }
+
+    .flow-node span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .flow-node img {
+      max-width: 100%;
+      border-radius: 16px;
+      display: block;
+      margin: 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .flow-node::after {
+      content: '→';
+      position: absolute;
+      right: -0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(56, 189, 248, 0.65);
+      font-size: 1.5rem;
+    }
+
+    .flow-node:last-child::after {
+      content: '';
+    }
+
     footer {
       text-align: center;
       padding: 1rem 0 2rem;
@@ -183,61 +250,96 @@
 </head>
 <body>
   <header>
-    <h1>Chicken Little</h1>
+    <h1>meow</h1><br>
   </header>
   <main>
-    <section class="intro">
-      <p>Discover a sleek reading experience with paragraph-by-paragraph navigation. Tap "Next" to advance, and watch your content flow with modern responsive styling.</p>
-      <p>Each paragraph is designed to feel fresh and readable. The layout adapts beautifully on desktop, tablet, and mobile screens.</p>
-    </section>
-
-    <section class="feature-grid">
-      <article class="feature-card">
-        <h2>Responsive design</h2>
-        <p>Auto-adjusting styles keep the page comfortable and easy to read on all device sizes.</p>
-      </article>
-      <article class="feature-card">
-        <h2>Interactive flow</h2>
-        <p>Navigate one paragraph at a time with buttons for a smoother story experience.</p>
-      </article>
-      <article class="feature-card">
-        <h2>Modern aesthetic</h2>
-        <p>Soft gradients, rounded cards, and elegant typography give this page a polished look.</p>
-      </article>
-    </section>
-
     <section class="paragraph-panel">
-      <h2>Paragraph navigator</h2>
-      <p class="paragraph-text" id="paragraphText">The sky was a deep indigo as the village lights began to flicker one by one, each one a tiny promise that the night would be gentle.</p>
+      <h2 id="paragraphIndicator"></h2>
+      <p class="paragraph-text" id="paragraphText"></p>
+      <div class="paragraph-gif">
+        <img id="paragraphGif" alt="Mood animated GIF">
+      </div>
       <div class="paragraph-actions">
         <button id="prevBtn" type="button" disabled>Previous</button>
         <button id="nextBtn" type="button">Next</button>
       </div>
     </section>
+
+    <section class="flow-chart" aria-label="Simple flow chart">
+      <div class="flow-node">
+        <strong>Actions</strong>
+        <span>Reflects your intentions</span>
+      </div>
+      <div class="flow-node">
+        <strong>Chosen</strong>
+        <span>Makes me feel seen</span>
+      </div>
+      <div class="flow-node">
+        <strong>Kura</strong>
+        <span>Is reassured</span>
+      </div>
+      <div class="flow-node">
+        <strong>Both parties</strong>
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDdjemt2eXFhYzk1YjlwbWh2NG1vbXRjNGI1NDMwZ2x2NndpeWpvMiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/udkkl8RXNka3KyrjQW/giphy.gif" alt="Decorative flow image">
+      </div>
+    </section>
   </main>
-  <footer>
-    <p>© 2026 Chicken Little</p>
-  </footer>
 
   <script>
     const paragraphs = [
-      'The sky was a deep indigo as the village lights began to flicker one by one, each one a tiny promise that the night would be gentle.',
-      'A soft breeze carried the scent of warm bread from the nearby bakery, inviting every passerby to pause and breathe.',
-      'Inside the small square, lanterns swayed in unison, casting graceful patterns across cobblestones and smiling faces.',
-      'People gathered with a quiet warmth, exchanging stories that felt as familiar and comforting as a favorite song.',
-      'By the time the moon rose high, the simple harmony of the evening had made the world feel a little kinder and more bright.'
+      'uhm hi im just gonna say how i feel recently and i hope you can understand me and not take it the wrong way, i am not blaming either of us.',
+      'i cant lie we are not together yet but we are still dating in a sense but it feels that i’m just getting treated the same as tapses as if he’s also dating you',
+      'well for the collab thing i wasnt really going to mind your collab with tapses but changing it out of a sudden and i know i was napping during the point you changed, it took me a screenshare to notice that you changed pfp, it was just annoying me how i wasn’t even told initially… it showed me how much you really cared… but again its not that deep since its just a pfp to you anyways.',
+      'and in the first place, i didn’t really want to do a collab with you because i know you don’t really like it and such, but back when you had the bluebox pfp, you were asking to collab a few times and it really just gave me hopes you wanted to do it too. but i sometimes question if i was getting used to get rid of the bluebox pfp sentimental value… thats how i felt at that point of time...',
+      'but i guess also maybe our collab wasn’t furries thats why idk,, it was as if everything you said about wanting to collab was forgotten ',
+      'im also afraid of initiating nowadays as i don’t know what is too much for you or when is a good time, of course i like to spend alot more time with you as much as both of us can',
+      'tapses can ask you as many times and you would still say yes most of the times as you guys are JUST FRIENDS and i get it that its hard to reject people',
+      'i don’t even know why i’m explaining myself because its so obvious… that i’m upset with just this one person, but we are both still in a grey area and i dont think im asking for that much',
+      'it pains me more that i have to find out without you telling me that you are playing with tapses. literally its just updating me on what you are doing but apparently maybe thats an invasion of privacy for you..??!!? idk. like again, i’m dating you, its not as if I’m your friend, i’m still something more than friends. this is very much the bare minimum because i would want to know what you are doing. even if you only have a few things to do like bed, study, game… updating me is just bringing me more reassurance because its nice to know what you are doing…',
+      'moving forward… i really don’t want to control you or put too much pressure on you.',
+      'i’d really appreciate it if you could interact with him a little less… and maybe update me sometimes about what you’re doing without me having to ask? 🥹',
+      'it’s kinda embarrassing for me to say this directly… i wanted to do it in a call but i doubt i will be able to say everything...',
+      'thank you for listening but if you really want to keep trying with me, then being a bit more mindful about how much time you spend with him help me not feel like giving up on us. and not just say "sorry" and continue the same behavior. i know you are trying your best, and actually doing great so far and i appreciate it, but i just want to be honest with how i feel and what i need from you which i guess its respecting my feelings now.',
+      'i still want to try too, but it’s been really hard for me lately even with just having low expectations but this is just a bare minimum',
+      'i hope that you too would try for us and not just detach again like before... i also know that you have alot on your plate and i am not that inconsiderate... but this is just how i feel currently and for this work out between us.',
+      'i too will work on myself more after this as i value self-improvement and i want to be a better person for you and for myself.'
     ];
 
     let currentIndex = 0;
     const paragraphText = document.getElementById('paragraphText');
+    const paragraphIndicator = document.getElementById('paragraphIndicator');
+    const paragraphGif = document.getElementById('paragraphGif');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
 
+    const gifUrls = [
+      'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeTVsOGhzcnpvMW9kazVuZW1jc3dhcDNlcWw5c2ZoaGExNjR6MW5kNiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/YM1zalNOVO0iA/giphy.gif',
+      'https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3c2xiamJzdjJqa3VyeGN6ZGs0YW12OGp2ejN4Y2VjbWlrejV6ZDhxcyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/tMbiUAjnBIVqwLRWZr/giphy.gif',
+      'https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3b3BkdDk3NWE1OGRscnd1YXBiZ3VuZTY0ajJ0N2hqYThsdXhpYTJ1ZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/A7268nWjdPHfAPwYzF/giphy.gif',
+      'https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3NDFiNDdpMnQ0YzN6ZnNueDhlNDF0d2d4bTd0NTBpaHFjMXF4OXBkaSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Ab2tLKySwKI48/giphy.gif',
+      'https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3dWV6NWJmNnRlcGt2dGQ4eWI0cjY5MDY0dWpucXg0bmE0YjRvbXF3YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/VnK6RAHtuetifVCpNA/giphy.gif',
+      'https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3YnhpaThzMDBiNmd5Y2Q0bTM4YXA5b28wN3puNTI0ejN0cjg3eThzcCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l1AsUQBPUIANFVQPK/giphy.gif',
+      'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2VybW1uazZ1ZmN3YW5wdmc0ZTRlb3ZuYWg2MGk5bDhxNjV5b2tqdyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/h8C9YrEMq7bObd0qDz/giphy.gif',
+      'https://media1.tenor.com/m/mSI9wkQDVw4AAAAd/roblox-mighty-omega.gif',
+      'https://media1.tenor.com/m/eooExZvkrhEAAAAd/cone-of.gif',
+      'https://media.tenor.com/1OWWhp6awb4AAAAi/imsorry-sorry.gif',
+      'https://media1.tenor.com/m/QbkppZAXbPIAAAAC/any-news-knocking.gif',
+      'https://media1.tenor.com/m/oBoAnwQhSScAAAAC/embarrassed-so-embarrassed.gif',
+      'https://media1.tenor.com/m/kQD5SJb-8u8AAAAC/omg-omg-omg-oh-god.gif',
+      'https://media1.tenor.com/m/_UhGT-CPjmoAAAAC/at-the-very-least-john-finch.gif',
+      'https://media.tenor.com/SrOu7IDNwqAAAAAi/pffft-trying-not-to-laugh.gif',
+      'https://media1.tenor.com/m/55DyzW8_mNAAAAAC/im-not-a-monster-good-person.gif',
+    ];
+
     function updateParagraph() {
       paragraphText.textContent = paragraphs[currentIndex];
+      paragraphIndicator.textContent = `${currentIndex + 1}`;
+      paragraphGif.src = gifUrls[currentIndex % gifUrls.length];
       prevBtn.disabled = currentIndex === 0;
       nextBtn.disabled = currentIndex === paragraphs.length - 1;
     }
+
+    updateParagraph();
 
     prevBtn.addEventListener('click', () => {
       if (currentIndex > 0) {
