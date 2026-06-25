@@ -5,67 +5,253 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chicken Little</title>
   <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-strong: #60a5fa;
+      --shadow: 0 20px 50px rgba(15, 23, 42, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: #f5f5f5;
-      color: #333;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.2), transparent 35%),
+                  linear-gradient(180deg, #0f172a 0%, #020617 100%);
+      color: var(--text);
+      min-height: 100vh;
     }
+
     header {
-      background: #4a90e2;
-      color: #fff;
-      padding: 20px;
+      padding: 3rem 1.5rem 2rem;
       text-align: center;
+      background: transparent;
+      position: relative;
     }
+
+    header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.18), transparent 45%);
+      pointer-events: none;
+    }
+
+    header h1 {
+      position: relative;
+      margin: 0;
+      font-size: clamp(2.25rem, 4vw, 4rem);
+      letter-spacing: -0.05em;
+    }
+
     main {
-      max-width: 960px;
-      margin: 20px auto;
-      padding: 20px;
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      width: min(1100px, calc(100% - 2rem));
+      margin: -2rem auto 2rem;
+      padding: 2rem;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
     }
-    section {
-      margin-bottom: 20px;
+
+    .intro {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 2rem;
     }
-    h1,
-    h2 {
-      margin: 0 0 10px;
+
+    .intro p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 1.05rem;
     }
-    p {
-      line-height: 1.6;
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
     }
+
+    .feature-card {
+      padding: 1.5rem;
+      border-radius: 24px;
+      background: #111827;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: transform 200ms ease, border-color 200ms ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    .feature-card h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.15rem;
+      color: #fff;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .paragraph-panel {
+      display: grid;
+      gap: 1rem;
+      padding: 1.75rem;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.98));
+      border: 1px solid rgba(56, 189, 248, 0.12);
+    }
+
+    .paragraph-panel h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #fff;
+    }
+
+    .paragraph-panel .paragraph-text {
+      margin: 0;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--text);
+      min-height: 6rem;
+    }
+
+    .paragraph-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .paragraph-actions button {
+      border: none;
+      border-radius: 999px;
+      padding: 0.95rem 1.35rem;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: transform 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      box-shadow: 0 14px 30px rgba(56, 189, 248, 0.18);
+    }
+
+    .paragraph-actions button:hover {
+      transform: translateY(-2px);
+    }
+
+    .paragraph-actions button:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      box-shadow: none;
+      background: rgba(56, 189, 248, 0.18);
+    }
+
     footer {
       text-align: center;
-      padding: 10px;
-      background: #eee;
+      padding: 1rem 0 2rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 640px) {
+      main {
+        margin: -1rem 1rem 1rem;
+        padding: 1.5rem;
+      }
+
+      .paragraph-actions {
+        justify-content: stretch;
+      }
+
+      .paragraph-actions button {
+        flex: 1 1 100%;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Welcome to Chicken Little</h1>
+    <h1>Chicken Little</h1>
   </header>
   <main>
-    <section>
-      <h2>About</h2>
-      <p>This is a simple landing page for your project. Add content and links here to make it your own.</p>
+    <section class="intro">
+      <p>Discover a sleek reading experience with paragraph-by-paragraph navigation. Tap "Next" to advance, and watch your content flow with modern responsive styling.</p>
+      <p>Each paragraph is designed to feel fresh and readable. The layout adapts beautifully on desktop, tablet, and mobile screens.</p>
     </section>
-    <section>
-      <h2>Features</h2>
-      <ul>
-        <li>Responsive layout</li>
-        <li>Clean design</li>
-        <li>Easy to update</li>
-      </ul>
+
+    <section class="feature-grid">
+      <article class="feature-card">
+        <h2>Responsive design</h2>
+        <p>Auto-adjusting styles keep the page comfortable and easy to read on all device sizes.</p>
+      </article>
+      <article class="feature-card">
+        <h2>Interactive flow</h2>
+        <p>Navigate one paragraph at a time with buttons for a smoother story experience.</p>
+      </article>
+      <article class="feature-card">
+        <h2>Modern aesthetic</h2>
+        <p>Soft gradients, rounded cards, and elegant typography give this page a polished look.</p>
+      </article>
     </section>
-    <section>
-      <h2>Get Started</h2>
-      <p>Open this file in a browser to see the page, and edit the content to match your project.</p>
+
+    <section class="paragraph-panel">
+      <h2>Paragraph navigator</h2>
+      <p class="paragraph-text" id="paragraphText">The sky was a deep indigo as the village lights began to flicker one by one, each one a tiny promise that the night would be gentle.</p>
+      <div class="paragraph-actions">
+        <button id="prevBtn" type="button" disabled>Previous</button>
+        <button id="nextBtn" type="button">Next</button>
+      </div>
     </section>
   </main>
   <footer>
     <p>© 2026 Chicken Little</p>
   </footer>
+
+  <script>
+    const paragraphs = [
+      'The sky was a deep indigo as the village lights began to flicker one by one, each one a tiny promise that the night would be gentle.',
+      'A soft breeze carried the scent of warm bread from the nearby bakery, inviting every passerby to pause and breathe.',
+      'Inside the small square, lanterns swayed in unison, casting graceful patterns across cobblestones and smiling faces.',
+      'People gathered with a quiet warmth, exchanging stories that felt as familiar and comforting as a favorite song.',
+      'By the time the moon rose high, the simple harmony of the evening had made the world feel a little kinder and more bright.'
+    ];
+
+    let currentIndex = 0;
+    const paragraphText = document.getElementById('paragraphText');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function updateParagraph() {
+      paragraphText.textContent = paragraphs[currentIndex];
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex === paragraphs.length - 1;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex -= 1;
+        updateParagraph();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentIndex < paragraphs.length - 1) {
+        currentIndex += 1;
+        updateParagraph();
+      }
+    });
+  </script>
 </body>
 </html>
