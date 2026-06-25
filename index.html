@@ -171,6 +171,63 @@
       background: rgba(56, 189, 248, 0.18);
     }
 
+    .page-blocker {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.95);
+      display: grid;
+      place-items: center;
+      z-index: 9999;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .page-blocker-content {
+      max-width: 420px;
+      width: 100%;
+      background: rgba(15, 23, 42, 1);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.35);
+    }
+
+    .page-blocker h1 {
+      margin: 0 0 1rem;
+      font-size: 1.85rem;
+      color: #fff;
+    }
+
+    .page-blocker-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .page-blocker button {
+      min-width: 120px;
+      padding: 0.95rem 1.35rem;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #fff;
+      cursor: pointer;
+      transition: transform 150ms ease, opacity 150ms ease;
+    }
+
+    .page-blocker button:hover {
+      transform: translateY(-2px);
+    }
+
+    .page-blocker-message {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      min-height: 1.2rem;
+    }
+
     .flow-chart {
       display: grid;
       grid-template-columns: repeat(4, minmax(150px, 1fr));
@@ -249,10 +306,20 @@
   </style>
 </head>
 <body>
-  <header>
+  <div class="page-blocker" id="pageBlocker">
+    <div class="page-blocker-content">
+      <h1>Are you Miko?</h1>
+      <div class="page-blocker-actions">
+        <button id="yesBtn" type="button">Yes</button>
+        <button id="noBtn" type="button">No</button>
+      </div>
+      <p class="page-blocker-message" id="blockerMessage"></p>
+    </div>
+  </div>
+  <header hidden>
     <h1>meow</h1><br>
   </header>
-  <main>
+  <main hidden>
     <section class="paragraph-panel">
       <h2 id="paragraphIndicator"></h2>
       <p class="paragraph-text" id="paragraphText"></p>
@@ -279,7 +346,7 @@
         <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDdjemt2eXFhYzk1YjlwbWh2NG1vbXRjNGI1NDMwZ2x2NndpeWpvMiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/udkkl8RXNka3KyrjQW/giphy.gif" alt="Decorative flow image">
       </div>
       <div class="flow-node">
-        <strong>Both parties</strong>
+        <strong>Both</strong>
         <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDdjemt2eXFhYzk1YjlwbWh2NG1vbXRjNGI1NDMwZ2x2NndpeWpvMiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/udkkl8RXNka3KyrjQW/giphy.gif" alt="Decorative flow image">
       </div>
     </section>
@@ -291,12 +358,12 @@
       'i cant lie we are not together yet but we are still dating in a sense but it feels that i’m just getting treated the same as tapses as if he’s also dating you',
       'well for the collab thing i wasnt really going to mind your collab with tapses but changing it out of a sudden and i know i was napping during the point you changed, it took me a screenshare to notice that you changed pfp, it was just annoying me how i wasn’t even told initially and didnt even hesitate to change or wait till i woke up… it showed me how much you really cared… but again its not that deep since its just a pfp to you anyways.',
       'and in the first place, i didn’t really want to do a collab with you because i know you don’t really like it and such, but back when you had the bluebox pfp, you were asking to collab a few times and it really just gave me hopes you wanted to do it too. but i sometimes question if i was getting used to get rid of the bluebox pfp sentimental value… thats how i felt at that point of time...',
-      'but i guess also maybe our collab wasn’t furries thats why idk,, it was as if everything you said about wanting to collab was forgotten ',
+      'but i guess also maybe our collab wasn’t furries thats why idk, or maybe it was just me that you didnt want to collab with, it was as if everything you said about wanting to collab was forgotten ',
       'im also afraid of initiating nowadays as i don’t know what is too much for you or when is a good time, of course i like to spend alot more time with you as much as both of us can',
       'tapses can ask you as many times and you would still say yes most of the times as you guys are JUST FRIENDS and i get it that its hard to reject people',
       'i don’t even know why i’m explaining myself because its so obvious… that i’m upset with just this one person, even though we are both still in a grey area and i dont think im asking for that much',
-      'it makes me feel a bit sad and anxious when i have to find out you’re playing with tapses instead of hearing it from you… i know it might feel like a lot, but even small updates about what you’re doing like studying, gaming, resting, would mean a lot to me. it helps me feel more reassured and connected but i also don’t want to invade your privacy or pressure you… i just makes me feel like i’m part of your day. i just wanted to be honest with you.',
-      'moving forward… i really don’t want to control you or put too much pressure on you.',
+      'it makes me feel a bit sad and anxious when i have to find out you’re playing with tapses instead of hearing it from you… i know it might feel like a lot, but even small updates about what you’re doing like studying, gaming, resting, would mean a lot to me. it helps me feel more reassured and connected but i also don’t want to invade your privacy or pressure you… i guess it just makes me feel like i’m part of your day. i just wanted to be honest with you.',
+      'moving forward… i really don’t want to control you or put too much pressure on you by like stopping interactions obviously thats controlling asf.',
       'i’d really appreciate it if you could interact with him a little less… and maybe update me sometimes about what you’re doing without me having to ask? 🥹',
       'it’s kinda embarrassing for me to say this so directly… i wanted to do it in a call but i doubt i will be able to say everything...',
       'thank you for listening but if you really want to keep trying with me, then being a bit more mindful about how much time you spend with him help me not feel like giving up on us. and not just say "sorry" and continue the same behavior. i know you are trying your best, and actually doing great so far and i appreciate it, but i just want to be honest with how i feel and what i need from you which i guess its respecting my feelings now.',
@@ -304,6 +371,8 @@
       'i hope that you too would try for us and not just detach again like before... i also know that you have alot on your plate and i am not that inconsiderate... but this is just how i feel currently and for this work out between us.',
       'i too will work on myself more after this as i value self-improvement and i want to be a better person for you and for myself.',
       'and i too want to know how you feel about this eventually... i know you are not the type to express your feelings but i hope you can try to be more open with me and not just say "i dont know" because i know you do feel something, i just want to know what it is and how you feel about this whole situation and how we can work on it together and i will try to be more understanding as well.',
+      'sorry this might be abit messy flow but i woke up the next day and wrote all of these before i forgot or get lazy TT',
+      'CHEERS'
     ];
 
     let currentIndex = 0;
@@ -312,8 +381,36 @@
     const paragraphGif = document.getElementById('paragraphGif');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
+    const pageBlocker = document.getElementById('pageBlocker');
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const blockerMessage = document.getElementById('blockerMessage');
+    const blockerQuestion = document.querySelector('.page-blocker h1');
+    const pageHeader = document.querySelector('header');
+    const pageMain = document.querySelector('main');
+    let blockerStep = 1;
 
-    const gifUrls = [
+    yesBtn.addEventListener('click', () => {
+      if (blockerStep === 1) {
+        blockerQuestion.textContent = 'This might be overwhelming. Are you prepared?';
+        blockerMessage.textContent = '';
+        blockerStep = 2;
+      } else {
+        pageBlocker.style.display = 'none';
+        pageHeader.hidden = false;
+        pageMain.hidden = false;
+      }
+    });
+
+    noBtn.addEventListener('click', () => {
+      if (blockerStep === 1) {
+        blockerMessage.textContent = 'Try again >:(.';
+      } else {
+        blockerMessage.textContent = 'If you are ready, press Yes to continue.';
+      }
+    });
+
+    const paragraphImageSrcs = [
       'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeTVsOGhzcnpvMW9kazVuZW1jc3dhcDNlcWw5c2ZoaGExNjR6MW5kNiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/YM1zalNOVO0iA/giphy.gif',
       'https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3c2xiamJzdjJqa3VyeGN6ZGs0YW12OGp2ejN4Y2VjbWlrejV6ZDhxcyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/tMbiUAjnBIVqwLRWZr/giphy.gif',
       'https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3b3BkdDk3NWE1OGRscnd1YXBiZ3VuZTY0ajJ0N2hqYThsdXhpYTJ1ZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/A7268nWjdPHfAPwYzF/giphy.gif',
@@ -330,11 +427,13 @@
       'https://media1.tenor.com/m/_UhGT-CPjmoAAAAC/at-the-very-least-john-finch.gif',
       'https://media.tenor.com/SrOu7IDNwqAAAAAi/pffft-trying-not-to-laugh.gif',
       'https://media1.tenor.com/m/55DyzW8_mNAAAAAC/im-not-a-monster-good-person.gif',
-      'https://media1.tenor.com/m/OlkD0znAW9cAAAAd/cat-kitty.gif'
+      'bleh.jpg',
+      'bleh.jpg',
+      'https://media1.tenor.com/m/knU8vgTEPekAAAAC/flower-for-u-flower-fo-my-flower.gif'
     ];
 
-    // Preload all GIFs for instant switching
-    gifUrls.forEach(url => {
+    // Preload all paragraph images for instant switching
+    paragraphImageSrcs.forEach(url => {
       const img = new Image();
       img.src = url;
     });
@@ -342,7 +441,7 @@
     function updateParagraph() {
       paragraphText.textContent = paragraphs[currentIndex];
       paragraphIndicator.textContent = `${currentIndex + 1}`;
-      paragraphGif.src = gifUrls[currentIndex];
+      paragraphGif.src = paragraphImageSrcs[currentIndex];
       prevBtn.disabled = currentIndex === 0;
       nextBtn.disabled = currentIndex === paragraphs.length - 1;
     }
